@@ -3,4 +3,23 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="Question1">What is 2 + 2?</string>
+    <string name="Question1AnswerChoiceA">1</string>
+    <string name="Question1AnswerChoiceB">2</string>
+    <string name="Question1AnswerChoiceC">3</string>
+    <string name="Question1AnswerChoiceD">4</string>
+    <string name="Question1CorrectAnswer">D</string>
+    <string name="Question2">What is 2 + 12?</string>
+    <string name="Question2AnswerChoiceA">11</string>
+    <string name="Question2AnswerChoiceB">12</string>
+    <string name="Question2AnswerChoiceC">13</string>
+    <string name="Question2AnswerChoiceD">14</string>
+    <string name="Question2CorrectAnswer">D</string>
+    <string name="Question3">What is 2 + 2?</string>
+    <string name="Question3AnswerChoiceA">1</string>
+    <string name="Question3AnswerChoiceB">2</string>
+    <string name="Question3AnswerChoiceC">3</string>
+    <string name="Question3AnswerChoiceD">4</string>
+    <string name="Question3CorrectAnswer">D</string>
+
 </resources>

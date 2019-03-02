@@ -51,6 +51,7 @@ public class QuizActivity extends AppCompatActivity {
 
         btnSubmitAnswer = (Button)findViewById(R.id.btnSubmitAnswer);
 
+        /*
         this.btnSubmitAnswer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,22 +69,25 @@ public class QuizActivity extends AppCompatActivity {
             }
         });
 
-
+        */
+        initiateQuestions();
+        setQuestionView(this.currentQuestion);
     }
 
     private boolean validateAnswer(){
 
         int selectedButtonId = this.radioGroupQuestion.getCheckedRadioButtonId();
 
+
         if (selectedButtonId != -1){
             String answerSelected = ((RadioButton)findViewById(selectedButtonId)).getText().toString();
 
             if (currentQuestion.isCorrectAnswer(answerSelected)){
-                Log.d(TAG, "validateAnswer: correct");
+                Log.d("Validate Answer", "validateAnswer: correct");
                 currentScore++;
             }
             else {
-                Log.d(TAG, "validateAnswer: incorrect");
+                Log.d("Validate Answer", "validateAnswer: incorrect");
             }
 
             return true;
@@ -92,5 +96,44 @@ public class QuizActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Please Select An Answer", Toast.LENGTH_SHORT).show();
             return false;
         }
+    }
+
+    private void initiateQuestions(){
+        alQuizQuestions = new ArrayList<QuizQuestion>();
+
+        QuizQuestion tmpQuestion1 = new QuizQuestion();
+        tmpQuestion1.setQuestion(getResources().getString(R.string.Question1));
+        tmpQuestion1.setChoiceA(getResources().getString(R.string.Question1AnswerChoiceA));
+        tmpQuestion1.setChoiceB(getResources().getString(R.string.Question1AnswerChoiceB));
+        tmpQuestion1.setChoiceC(getResources().getString(R.string.Question1AnswerChoiceC));
+        tmpQuestion1.setChoiceD(getResources().getString(R.string.Question1AnswerChoiceD));
+        tmpQuestion1.setCorrectAnswer(getResources().getString(R.string.Question1CorrectAnswer));
+
+        alQuizQuestions.add(tmpQuestion1);
+
+        QuizQuestion tmpQuestion2 = new QuizQuestion();
+        tmpQuestion2.setQuestion(getResources().getString(R.string.Question1));
+        tmpQuestion2.setChoiceA(getResources().getString(R.string.Question2AnswerChoiceA));
+        tmpQuestion2.setChoiceB(getResources().getString(R.string.Question2AnswerChoiceB));
+        tmpQuestion2.setChoiceC(getResources().getString(R.string.Question2AnswerChoiceC));
+        tmpQuestion2.setChoiceD(getResources().getString(R.string.Question2AnswerChoiceD));
+        tmpQuestion2.setCorrectAnswer(getResources().getString(R.string.Question2CorrectAnswer));
+
+        alQuizQuestions.add(tmpQuestion2);
+
+        this.maxScore = alQuizQuestions.size();
+
+    }
+
+    private void setQuestionView(QuizQuestion question){
+
+        radioGroupQuestion.clearCheck();
+
+        this.tvQuestion.setText(question.getQuestion());
+        this.rdChoiceA.setText(question.getChoiceA());
+        this.rdChoiceB.setText(question.getChoiceB());
+        this.rdChoiceC.setText(question.getChoiceC());
+        this.rdChoiceD.setText(question.getChoiceD());
+
     }
 }
