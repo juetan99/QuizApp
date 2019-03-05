@@ -56,14 +56,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Start the game.
-                startGame();
+                Intent intent = new Intent(MainActivity.this, QuizActivity.class);
+                startActivity(intent);
             }
         });
 
 
-    }
-
-    private void startGame(){
-        startActivity(new Intent(MainActivity.this, com.example.juet.quizapp.QuizActivity.class));
     }
 }

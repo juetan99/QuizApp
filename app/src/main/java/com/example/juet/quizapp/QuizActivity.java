@@ -1,5 +1,6 @@
 package com.example.juet.quizapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,8 @@ import java.util.ArrayList;
 
 public class QuizActivity extends AppCompatActivity {
 
+    public static final String EXTRA_SCORE = "com.example.juet.quizapp.SCORE";
+    public static final String EXTRA_MAX_SCORE = "com.example.juet.quizapp.MAXSCORE";
     private ArrayList<QuizQuestion> alQuizQuestions = null;
     QuizQuestion currentQuestion = null;
     int currentQuestionNumber = 1;
@@ -51,17 +54,22 @@ public class QuizActivity extends AppCompatActivity {
 
         btnSubmitAnswer = (Button)findViewById(R.id.btnSubmitAnswer);
 
-        /*
+
         this.btnSubmitAnswer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // validate answer
                 if (validateAnswer()){
                     if (currentQuestionNumber < maxScore){
-
+                        currentQuestionNumber = currentQuestionNumber + 1;
+                        currentQuestion = alQuizQuestions.get(currentQuestionNumber - 1);
+                        setQuestionView(currentQuestion);
                     }
                     else {
-
+                        Intent intentResult = new Intent(QuizActivity.this, ResultActivity.class);
+                        intentResult.putExtra(EXTRA_SCORE, currentScore );
+                        intentResult.putExtra(EXTRA_MAX_SCORE, maxScore );
+                        startActivity(intentResult);
                     }
 
                 }
@@ -69,15 +77,16 @@ public class QuizActivity extends AppCompatActivity {
             }
         });
 
-        */
+
         initiateQuestions();
+
+        this.currentQuestion = alQuizQuestions.get(this.currentQuestionNumber - 1);
         setQuestionView(this.currentQuestion);
     }
 
     private boolean validateAnswer(){
 
         int selectedButtonId = this.radioGroupQuestion.getCheckedRadioButtonId();
-
 
         if (selectedButtonId != -1){
             String answerSelected = ((RadioButton)findViewById(selectedButtonId)).getText().toString();
@@ -109,26 +118,41 @@ public class QuizActivity extends AppCompatActivity {
         tmpQuestion1.setChoiceD(getResources().getString(R.string.Question1AnswerChoiceD));
         tmpQuestion1.setCorrectAnswer(getResources().getString(R.string.Question1CorrectAnswer));
 
-        alQuizQuestions.add(tmpQuestion1);
+        alQuizQuestions.add(0, tmpQuestion1);
 
         QuizQuestion tmpQuestion2 = new QuizQuestion();
-        tmpQuestion2.setQuestion(getResources().getString(R.string.Question1));
+        tmpQuestion2.setQuestion(getResources().getString(R.string.Question2));
         tmpQuestion2.setChoiceA(getResources().getString(R.string.Question2AnswerChoiceA));
         tmpQuestion2.setChoiceB(getResources().getString(R.string.Question2AnswerChoiceB));
         tmpQuestion2.setChoiceC(getResources().getString(R.string.Question2AnswerChoiceC));
         tmpQuestion2.setChoiceD(getResources().getString(R.string.Question2AnswerChoiceD));
         tmpQuestion2.setCorrectAnswer(getResources().getString(R.string.Question2CorrectAnswer));
 
-        alQuizQuestions.add(tmpQuestion2);
+        alQuizQuestions.add(1, tmpQuestion2);
+
+        QuizQuestion tmpQuestion3 = new QuizQuestion();
+        tmpQuestion3.setQuestion(getResources().getString(R.string.Question3));
+        tmpQuestion3.setChoiceA(getResources().getString(R.string.Question3AnswerChoiceA));
+        tmpQuestion3.setChoiceB(getResources().getString(R.string.Question3AnswerChoiceB));
+        tmpQuestion3.setChoiceC(getResources().getString(R.string.Question3AnswerChoiceC));
+        tmpQuestion3.setChoiceD(getResources().getString(R.string.Question3AnswerChoiceD));
+        tmpQuestion3.setCorrectAnswer(getResources().getString(R.string.Question3CorrectAnswer));
+
+        alQuizQuestions.add(2, tmpQuestion3);
 
         this.maxScore = alQuizQuestions.size();
 
     }
 
     private void setQuestionView(QuizQuestion question){
+        if (question == null){
+            Log.d("setQuestionView", "Question is null ");
+            return;
+        }
 
         radioGroupQuestion.clearCheck();
 
+        this.tvQuestionTitle.setText("Question #" + this.currentQuestionNumber);
         this.tvQuestion.setText(question.getQuestion());
         this.rdChoiceA.setText(question.getChoiceA());
         this.rdChoiceB.setText(question.getChoiceB());

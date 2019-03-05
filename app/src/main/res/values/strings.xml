@@ -8,18 +8,18 @@
     <string name="Question1AnswerChoiceB">2</string>
     <string name="Question1AnswerChoiceC">3</string>
     <string name="Question1AnswerChoiceD">4</string>
-    <string name="Question1CorrectAnswer">D</string>
-    <string name="Question2">What is 2 + 12?</string>
-    <string name="Question2AnswerChoiceA">11</string>
-    <string name="Question2AnswerChoiceB">12</string>
-    <string name="Question2AnswerChoiceC">13</string>
-    <string name="Question2AnswerChoiceD">14</string>
-    <string name="Question2CorrectAnswer">D</string>
-    <string name="Question3">What is 2 + 2?</string>
-    <string name="Question3AnswerChoiceA">1</string>
+    <string name="Question1CorrectAnswer">4</string>
+    <string name="Question2">What is 2 * 2?</string>
+    <string name="Question2AnswerChoiceA">5</string>
+    <string name="Question2AnswerChoiceB">6</string>
+    <string name="Question2AnswerChoiceC">4</string>
+    <string name="Question2AnswerChoiceD">8</string>
+    <string name="Question2CorrectAnswer">4</string>
+    <string name="Question3">What is 2 / 2?</string>
+    <string name="Question3AnswerChoiceA">3</string>
     <string name="Question3AnswerChoiceB">2</string>
-    <string name="Question3AnswerChoiceC">3</string>
-    <string name="Question3AnswerChoiceD">4</string>
-    <string name="Question3CorrectAnswer">D</string>
+    <string name="Question3AnswerChoiceC">1</string>
+    <string name="Question3AnswerChoiceD">2</string>
+    <string name="Question3CorrectAnswer">1</string>
 
 </resources>

@@ -22,6 +22,10 @@
             android:name=".QuizActivity"
             android:label="QuizApp">
         </activity>
+        <activity
+            android:name=".ResultActivity"
+            android:label="QuizApp">
+        </activity>
     </application>
 
 </manifest>
